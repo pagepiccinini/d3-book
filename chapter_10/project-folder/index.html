@@ -46,6 +46,9 @@
           })
           .attr("fill", function(d) {
             return "rgb(0, 0, " + (d * 10) + ")";
+          })
+          .on("click", function(d) {
+            console.log(d);
           });
 
       //Create labels
