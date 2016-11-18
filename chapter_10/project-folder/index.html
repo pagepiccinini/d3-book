@@ -53,6 +53,10 @@
           .on("mouseover", function(d) {
             d3.select(this)
               .attr("fill", "orange");
+          })
+          .on("mouseout", function(d) {
+            d3.select(this)
+              .attr("fill", "rgb(0, 0, " + (d * 10) + ")");
           });
 
       //Create labels
