@@ -5,11 +5,7 @@
     <title>D3 Page Template</title>
     <script type="text/javascript" src="d3/d3.js"></script>
     <style type="text/css">
-
-      rect:hover {
-        fill: orange;
-      }
-
+      /* No style rules here yet */
     </style>
   </head>
   <body>
@@ -54,8 +50,9 @@
           .attr("fill", function(d) {
             return "rgb(0, 0, " + (d * 10) + ")";
           })
-          .on("click", function(d) {
-            console.log(d);
+          .on("mouseover", function(d) {
+            d3.select(this)
+              .attr("fill", "orange");
           });
 
       //Create labels
