@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <title>D3 Page Template</title>
     <script type="text/javascript" src="d3/d3.js"></script>
+    <style type="text/css">
+
+      text {
+        font-family: sans-serif;
+        font-size: 12px;
+        fill: white;
+      }
+    </style>
   </head>
   <body>
     <script type="text/javascript">
@@ -15,7 +23,7 @@
       var dataset = [ 5, 10, 20, 45, 6, 25 ];
 
       var outerRadius = w / 2;
-      var innerRadius = 0;
+      var innerRadius = w / 3;
       var arc = d3.arc()
                   .innerRadius(innerRadius)
                   .outerRadius(outerRadius);
