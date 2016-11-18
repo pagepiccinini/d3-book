@@ -77,12 +77,22 @@
           .attr("font-size", "11px")
           .attr("fill", "white");
 
+      //Define sort order flag
+      var sortOrder = false;
+
       //Define sort function
       var sortBars = function() {
 
+        //Flip value of sortOrder
+        sortOrder = !sortOrder;
+
         svg.selectAll("rect")
             .sort(function(a, b) {
-              return d3.ascending(a, b);
+              if (sortOrder) {
+                return d3.ascending(a, b);
+              } else {
+                return d3.descending(a, b);
+              }
             })
             .transition()
             .duration(1000)
