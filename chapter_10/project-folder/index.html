@@ -59,7 +59,7 @@
           })
           .append("title")
           .text(function(d) {
-            return d;
+            return "This value is " + d;
           });
 
       //Define sort order flag
@@ -69,7 +69,7 @@
       var sortBars = function() {
 
         //Flip value of sortOrder
-        sortOrder = !sortOrder;
+        sortOrer = !sortOrder;
 
         svg.selectAll("rect")
             .sort(function(a, b) {
