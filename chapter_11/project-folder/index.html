@@ -17,34 +17,21 @@
 
       //Original data
       var dataset = [
-            [
-              { x: 0, y: 5 },
-              { x: 1, y: 4 },
-              { x: 2, y: 2 },
-              { x: 3, y: 7 },
-              { x: 4, y: 23}
-            ],
-            [
-              { x: 0, y: 10 },
-              { x: 1, y: 12 },
-              { x: 2, y: 19 },
-              { x: 3, y: 23 },
-              { x: 4, y: 17 }
-            ],
-            [
-              { x: 0, y: 22 },
-              { x: 1, y: 28 },
-              { x: 2, y: 32 },
-              { x: 3, y: 35 },
-              { x: 4, y: 43 }
-            ]
+        { apples: 5, oranges: 10, grapes: 22 },
+        { apples: 4, oranges: 12, grapes: 28 },
+        { apples: 2, oranges: 19, grapes: 32 },
+        { apples: 7, oranges: 23, grapes: 35 },
+        { apples: 23, oranges: 17, grapes: 43 }
       ];
 
       //Set up stack method
-      var stack = d3.stack();
+      var stack = d3.stack()
+                    .keys(["apples", "oranges", "grapes"])
+                    .order(d3.stackOrderNone)
+                    .offset(d3.stackOffsetNone);
 
       //Data, stacked
-      stack(dataset);
+      var series = stack(dataset);
 
       //Set up scales
       var xScale = d3.scaleBand()
@@ -73,7 +60,7 @@
 
       //Add a group for each row of data
       var groups = svg.selectAll("g")
-                      .data(dataset)
+                      .data(series)
                       .enter()
                       .append("g")
                       .style("fill", function(d, i) {
@@ -91,7 +78,7 @@
                           return xScale(i);
                         })
                         .attr("y", function(d) {
-                          return yScale(d.y0);
+                          return yScale(d.y);
                         })
                         .attr("height", function(d) {
                           return yScale(d.y);
