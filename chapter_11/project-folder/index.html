@@ -48,9 +48,10 @@
 
         //Initialize a default force simulation, using the nodes and links in dataset
         var simulation = d3.forceSimulation()
-                            .force("link", d3.forceLink().id(function(d) { return d.id; }))
+                            .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(50))
                             .force("charge", d3.forceManyBody())
                             .force("center", d3.forceCenter(w / 2, h / 2));
+
 
         var colors = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -86,10 +87,10 @@
 
         //Every time the simulation "ticks", this will be called
         simulation.nodes(dataset.nodes)
-                  .on("tick", ticked);
+                 .on("tick", ticked);
 
         simulation.force("link")
-                  .links(dataset.links);
+                 .links(dataset.links);
 
         function ticked() {
 
