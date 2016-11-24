@@ -16,9 +16,9 @@
       var h = 300;
 
       //Define map projection - needed as first step in v4
-      var projection = d3.geoAlbersUsa()
+      var projection = d3.geoMercator()
                          .translate([w/2, h/2])
-                         .scale([500]);
+                         .scale([80]);
 
       //Define path generator
       var path = d3.geoPath()
