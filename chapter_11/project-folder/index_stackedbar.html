@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>D3 Page Template: Chapter 12 - Stacked Barplot</title>
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <style type="text/css">
+      /* No style rules here yet */
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      //Width and height
+      var w = 300;
+      var h = 300;
+
+      //Original data
+      var dataset = [
+				[
+					{ x: 0, y: 5 },
+					{ x: 1, y: 4 },
+					{ x: 2, y: 2 },
+					{ x: 3, y: 7 },
+					{ x: 4, y: 23 }
+				],
+				[
+					{ x: 0, y: 10 },
+					{ x: 1, y: 12 },
+					{ x: 2, y: 19 },
+					{ x: 3, y: 23 },
+					{ x: 4, y: 17 }
+				],
+				[
+					{ x: 0, y: 22 },
+					{ x: 1, y: 28 },
+					{ x: 2, y: 32 },
+					{ x: 3, y: 35 },
+					{ x: 4, y: 43 }
+				]
+			];
+
+      //Set up stack method
+      var stack = d3.stack();
+
+      //Data, stacked
+      stack(dataset);
+
+      //Set up sa
+
+    </script>
+  </body>
+</html>
