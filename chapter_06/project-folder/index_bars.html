@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>D3 Page Template: Chapter 5 - Bars</title>
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <style type="text/css">
+
+      div.bar {
+        display: inline-block;
+        width: 20px;
+        height: 75px; /* We'll override height later */
+        background-color: teal;
+        margin-right: 2px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      var dataset = [];
+      for (var i = 0; i < 25; i++) {
+        var newNumber = Math.floor(Math.random() * 30);
+        dataset.push(newNumber);
+      }
+
+      d3.select("body").selectAll("p")
+        .data(dataset)
+        .enter()
+        .append("div")
+        .attr("class", "bar")
+        .style("height", function(d) {
+          var barHeight = d * 5; //Scale up by factor of 5
+          return barHeight + "px";
+        });
+
+    </script>
+  </body>
+</html>
