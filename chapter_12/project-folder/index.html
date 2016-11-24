@@ -108,10 +108,12 @@
                .attr("cy", function(d) {
                  return projection([d.lon, d.lat])[1];
                })
-               .attr("r", 5)
+               .attr("r", function(d) {
+                 return Math.sqrt(parseInt(d.population) * 0.00004);
+               })
                .style("fill", "yellow")
                .style("opacity", 0.75);
-               
+
           });
 
         });
