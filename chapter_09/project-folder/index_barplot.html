@@ -2,27 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>D3 Page Template</title>
+    <title>D3 Page Template: Chapter 9 - Barplot</title>
     <script type="text/javascript" src="d3/d3.js"></script>
+    <style type="text/css">
+      /* No style rules here yet */
+    </style>
   </head>
   <body>
-
-    <!-- <p>Click on this text to update the chart with new data values as many times as you like!<p> -->
-
-    <!-- <p>Click on this text to add a new data value to the chart!<p> -->
-
-    <!-- <p>Click on this text to remove a new data value to the chart!<p> -->
 
     <p id="add">Add a new data value</p>
     <p id="remove">Remove a data value</p>
 
     <script type="text/javascript">
+
     //Width and height
     var w = 600;
     var h = 250;
-
-    // var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
-    //         11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
 
     var dataset = [ { key: 0, value: 5 },
                 { key: 1, value: 10 },
@@ -49,10 +44,6 @@
                   .domain(d3.range(dataset.length))
                   .rangeRound([0, w])
                   .paddingInner(0.05);
-
-    // var yScale = d3.scaleLinear()
-    //               .domain([0, d3.max(dataset)])
-    //               .range([0, h]);
 
     var yScale = d3.scaleLinear()
                   .domain([0, d3.max(dataset, function(d) {
@@ -114,23 +105,6 @@
     d3.selectAll("p")
       .on("click", function() {
 
-        //New values for dataset
-        // var numValues = dataset.length;
-        // var maxValue = 100;
-        // dataset = [];
-        // for (var i = 0; i < numValues; i++) {
-        //   var newNumber = Math.floor(Math.random() * maxValue);
-        //   dataset.push(newNumber);
-        // }
-
-        //Add one new value to dataset
-        // var maxValue = 25;
-        // var newNumber = Math.floor(Math.random() * maxValue);
-        // dataset.push(newNumber);
-
-        //Remove one value from dataset
-        // dataset.shift();
-
         //See which p was clicked
         var paragraphID = d3.select(this).attr("id");
 
@@ -152,7 +126,6 @@
 
         //Update scale domains
         xScale.domain(d3.range(dataset.length));
-        //yScale.domain([0, d3.max(dataset)]);
         yScale.domain([0, d3.max(dataset, function(d) {
           return d.value;
         })]);
@@ -197,44 +170,6 @@
             .duration(500)
             .attr("x", -xScale.bandwidth())
             .remove();
-
-        //Update all rects
-        // svg.selectAll("rect")
-        //     .data(dataset)
-        //     .transition()
-        //     .delay(function(d, i) {
-        //       return i / dataset.length * 1000;
-        //     })
-        //     .duration(500)
-        //     //.ease(d3.easeBounce)
-        //     .attr("y", function(d) {
-        //       return h - yScale(d);
-        //     })
-        //     .attr("height", function(d) {
-        //       return yScale(d);
-        //     })
-        //     .attr("fill", function(d) {
-        //       return "rgb(0, 0, " + (d * 10) + ")";
-        //     });
-
-        //Update all labels
-        // svg.selectAll("text")
-        //     .data(dataset, key)
-        //     .transition()
-        //     // .delay(function(d, i) {
-        //     //   return i / dataset.length * 1000;
-        //     // })
-        //     .duration(500)
-        //     //.ease(d3.easeBounce)
-        //     .text(function(d) {
-        //       return d.value;
-        //     })
-        //     .attr("x", function(d, i) {
-        //       return xScale(i) + xScale.bandwidth() / 2;
-        //     })
-        //     .attr("y", function(d) {
-        //       return h - yScale(d.value) + 14;
-        //     });
 
         //Update all labels
 
